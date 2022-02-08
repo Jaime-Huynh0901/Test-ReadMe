@@ -73,11 +73,10 @@ To build a backend ETL data pipeline to pipe data from multiple ads server (Goog
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Please follow the step below to set up your project, run the code locally, invoke lambda function via SQS in cloud console.
+Please follow the steps below to set up your project, run the code locally, invoke lambda function via SQS in cloud console.
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
 * Ensure you are using `NPM version 7.18.1` and `Node.js version 14x (project using v16.4.1)` or above
   ```sh
   npm install npm@latest -g
@@ -109,7 +108,7 @@ This is an example of how to list things you need to use the software and how to
     Allow: logs:PutLogEvents
   Lambda permission
     AWSLambda_FullAccess
-  AWS CloudFormation for deployment
+  AWS CloudFormation deployment
     AWSCloudFormationFullAccess
   ```
 * Install AWS CLI and set up your AWS profile to access AWS from command line
@@ -137,7 +136,7 @@ This is an example of how to list things you need to use the software and how to
 4. Update the credentials (AdsAccount, accessToken, clientId, clientSecret, developerToken, refreshToken) for each platform in the example folder. Please see each platform's ReadMe for link and step on how to obtain new credentials for each Ads platform.
    ```js
    
-   data-ga.json
+   `data-ga.json`
     {
     "startDate": "2021-01-01",
     "endDate": "2021-06-30",
@@ -150,7 +149,7 @@ This is an example of how to list things you need to use the software and how to
     "refreshToken": "Your_Refresh_Token"
     }
     
-    data-fb.json
+    `data-fb.json`
     {
     "startDate": "2021-01-01",
     "endDate": "2021-01-30",
@@ -160,7 +159,7 @@ This is an example of how to list things you need to use the software and how to
     "accessToken": "Your_Access_Token"
     }
     
-    data-tb.json
+    `data-tb.json`
     {
     "startDate": "2021-07-01",
     "endDate": "2021-09-30",

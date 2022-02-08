@@ -260,7 +260,7 @@ The AWS references below are for Google Ads, which can be used as a guide for th
     ```
     trialbee-datapipeline-sls-repo-master-prod-get-ga
     ```
-    [AWS Console link](hhttps://us-west-2.console.aws.amazon.com/lambda/home?region=us-west-2#/functions/trialbee-datapipeline-sls-repo-master-prod-get-ga)
+    [AWS Console link](https://us-west-2.console.aws.amazon.com/lambda/home?region=us-west-2#/functions/trialbee-datapipeline-sls-repo-master-prod-get-ga)
 
 ### AWS CloudWatch  
 - Check `AWS CloudWatch` alerts and metrics in the AWS Console

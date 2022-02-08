@@ -187,6 +187,10 @@ Use this space to show useful examples of how a project can be used. Additional 
 
 Invoke Lambda Function locally & Upload Object to S3
 
+<li>Google Ads: max time range = 90 days</li>
+<li>Facebook Ads: max time range = 30 days</li>
+<li>Taboola Ads: max time range = 90 days</li>
+
 1. Invoke Google Ads Lambda Function locally
    ```sh
    npm run local-ga

@@ -85,7 +85,7 @@ Please follow the steps below to set up your project, run the code locally, invo
   ```sh
   npm install -g serverless@2
   ```
-* set up the AWS user account for your developer to use AWS service (only need programmatic access to use command line)
+* Set up the AWS user account for your developer to use AWS service (only need programmatic access to use the aws command line)
   ```sh
   S3 permission
     AmazonS3FullAccess 
@@ -133,7 +133,7 @@ Please follow the steps below to set up your project, run the code locally, invo
    ```sh
    npm install
    ```
-4. Update the credentials (AdsAccount, accessToken, clientId, clientSecret, developerToken, refreshToken) for each platform in the example folder. Please see each platform's ReadMe for link and step on how to obtain new credentials for each Ads platform.
+4. Update the credentials (AdsAccount, accessToken, clientId, clientSecret, developerToken, refreshToken) for each platform in the example folder. Please see each platform's ReadMe for the links and steps on how to obtain new credentials for each Ads platform.
    ```js
    
    `data-ga.json`

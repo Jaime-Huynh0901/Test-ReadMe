@@ -43,10 +43,12 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-
 To build a backend ETL data pipeline to pipe data from multiple ads server (Google Ads, Taboola, Facebook ), tranform it to unified data format and then to store it in S3 bucket as daily campaign object.
+
+<img src="GA-sampleData.png" width="500" height="500">
+<img src="TB-sampleData.png" width="500" height="500">
+<img src="FB-sampleData.png" width="500" height="500">
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -60,7 +62,7 @@ To build a backend ETL data pipeline to pipe data from multiple ads server (Goog
 * [AWS Lambda](https://aws.amazon.com/lambda/)
 * [AWS SQS](https://aws.amazon.com/sqs/)
 * [AWS cloudwatch](https://aws.amazon.com/cloudwatch/)
-* [AWS CLI](hhttps://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 * [google-ads-api](https://www.npmjs.com/package/google-ads-api)
 
 
@@ -71,7 +73,7 @@ To build a backend ETL data pipeline to pipe data from multiple ads server (Goog
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Please follow 
+Please follow the step below to set up your project, run the code locally, invoke lambda function via SQS in cloud console.
 
 ### Prerequisites
 
@@ -134,6 +136,7 @@ This is an example of how to list things you need to use the software and how to
    ```
 4. Update the credentials (AdsAccount, accessToken, clientId, clientSecret, developerToken, refreshToken) for each platform in the example folder. Please see each platform's ReadMe for link and step on how to obtain new credentials for each Ads platform.
    ```js
+   
    data-ga.json
     {
     "startDate": "2021-01-01",
@@ -146,6 +149,7 @@ This is an example of how to list things you need to use the software and how to
     "developerToken": "Your_Developer_Token",
     "refreshToken": "Your_Refresh_Token"
     }
+    
     data-fb.json
     {
     "startDate": "2021-01-01",
@@ -155,6 +159,7 @@ This is an example of how to list things you need to use the software and how to
     "triggeredBy": "youremail@gmail.com",
     "accessToken": "Your_Access_Token"
     }
+    
     data-tb.json
     {
     "startDate": "2021-07-01",
@@ -168,7 +173,6 @@ This is an example of how to list things you need to use the software and how to
         "client_secret": "Your_Client_Sercet",
         "grant_type": "client_credentials"
     }
-}
 
    ```
 

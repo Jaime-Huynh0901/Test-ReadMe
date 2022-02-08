@@ -139,7 +139,7 @@ Please follow the steps below to set up your project, run the code locally, invo
    `data-ga.json`
     {
     "startDate": "2021-01-01",
-    "endDate": "2021-06-30",
+    "endDate": "2021-03-30",
     "adsAccount": "Your_Ads_Account",
     "source": "GoogleAds",
     "triggeredBy": "youremail@gmail.com",
@@ -189,6 +189,7 @@ Invoke Lambda Function locally & Upload Object to S3
 <li>Google Ads: max time range = 90 days</li>
 <li>Facebook Ads: max time range = 30 days</li>
 <li>Taboola Ads: max time range = 90 days</li>
+<p></p>
 
 1. Invoke Google Ads Lambda Function locally
    ```sh

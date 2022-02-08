@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://trialbee.com/">
-    <img src="https://trialbee.com/wp-content/uploads/2021/04/Trialbee-Logo.png" alt="Logo" width="80" height="80">
+    <img src="https://trialbee.com/wp-content/uploads/2021/04/Trialbee-Logo.png" alt="Logo">
   </a>
 
 <h3 align="center">TrialBee Ads Data Pipeline</h3>

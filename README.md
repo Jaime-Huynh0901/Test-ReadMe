@@ -389,6 +389,11 @@ The AWS references below are for Google Ads, which can be used as a guide for th
     bucketOne: datapipeline.trialbee.com.master.copy
     ``` 
     [AWS Console link](https://s3.console.aws.amazon.com/s3/buckets/datapipeline.trialbee.com.master.copy?region=us-west-2&tab=objects)
+    
+    ```
+    bucketLocal: datapipeline.trialbee.com.master.local
+    ```
+    [AWS Console link](https://s3.console.aws.amazon.com/s3/buckets/datapipeline.trialbee.com.master.local?region=us-west-2&tab=objects)
 
 ### AWS SQS
 - Check `AWS SQS` queue in the AWS Console.
@@ -399,12 +404,17 @@ The AWS references below are for Google Ads, which can be used as a guide for th
     [AWS Console link](https://us-west-2.console.aws.amazon.com/sqs/v2/home?region=us-west-2#/queues/https%3A%2F%2Fsqs.us-west-2.amazonaws.com%2F802850677066%2FTrialbee-GA-Queue-Master)
 
 ### AWS Lambda
-- Check `Lambda function` in the AWS Console.
+- Check `Lambda function` in the AWS Console for prod and dev stage
 
     ```
     trialbee-datapipeline-sls-repo-master-prod-get-ga
     ```
     [AWS Console link](https://us-west-2.console.aws.amazon.com/lambda/home?region=us-west-2#/functions/trialbee-datapipeline-sls-repo-master-prod-get-ga)
+    
+    ```
+    trialbee-datapipeline-sls-repo-master-dev-get-ga-local
+    ```
+    [AWS Console link](https://us-west-2.console.aws.amazon.com/lambda/home?region=us-west-2#/functions/trialbee-datapipeline-sls-repo-master-dev-get-ga-local)
 
 ### AWS CloudWatch  
 - Check `AWS CloudWatch` alerts and metrics in the AWS Console

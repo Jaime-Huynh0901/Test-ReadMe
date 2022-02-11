@@ -189,46 +189,191 @@ Invoke Lambda Function locally & Upload Object to S3
 <li>Taboola Ads: max time range = 90 days</li>
 <p></p>
 
-1. Invoke Google Ads Lambda Function locally
+1. Invoke Lambda Function locally
    ```sh
    npm run local-ga
-   ```
-2. Invoke Google Ads Lambda Function in AWS console via SQS
-   ```sh
-   a. Go to `Trialbee-GA-Queue-Master` and hit Send and receive messages
-
-   b. Copy the json object from the `data-ga.json` file into the Message body and hit `Send message`
-   ```
-3. Invoke Facebook Ads Lambda Function locally
-   ```sh
+   
    npm run local-fb
-   ```
-4. Invoke Facebook Ads Lambda Function in AWS console via SQS
-   ```sh
-   a. Go to `Trialbee-FB-Queue-Master` and hit Send and receive messages
-
-   b. Copy the json object from the `data-fb.json` file into the Message body and hit `Send message`
-   ```
-5. Invoke Taboola Ads Lambda Function locally
-   ```sh
+   
    npm run local-tb
    ```
-6. Invoke Taboola Ads Lambda Function in AWS console via SQS
+   
+2. Invoke Lambda Function in AWS console via SQS
    ```sh
-   a. Go to `Trialbee-TB-Queue-Master` and hit Send and receive messages
+   a. Go to `Trialbee-AdPlatform-Queue-Master` and hit Send and receive messages
+   ie: `Trialbee-GA-Queue-Master`
 
-   b. Copy the json object from the `data-tb.json` file into the Message body and hit `Send message`
+   b. Copy the json object from the `data-adPlatform.json` file into the Message body and hit `Send message`
+   ie: `data-ga.json`
    ```
-7. Automated Testing
+   
+3. Automated Testing
    ```sh
    npm run test
    ```
-8. Deploy AWS service with serverless deploy
+   
+4. Deploy AWS service with serverless deploy
    ```sh
    npm run deploy (currently default to prod)
    or 
    sls deploy --verbose -s Your_Stage_Name
    ```
+   
+5. Adding new Metrics to the Google Ads
+   
+   ```sh
+   a. Add new metric to query object in googleAds-query.js file
+   
+   metrics: [
+    'metrics.ctr',
+    'metrics.impressions',
+    'metrics.average_cpc',
+    'metrics.clicks',
+    'metrics.all_conversions',
+    'metrics.clicks',
+    'metrics.cost_per_conversion',
+    'metrics.all_conversions_from_interactions_rate',
+    'metrics.cost_micros',
+    'segments.date',
+    'metrics.**your_new_metric**'
+   ]
+   b. Add new metric mapping to update schemGA object in schema-ga.js file
+   
+    {
+    name: 'campaignName',
+    id: 'campaignId',
+    status: 'campaignStatus',
+    resource_name: 'resourceName',
+    ctr: 'clickThroughRate',
+    impressions: 'impression',
+    average_cpc: 'costPerClick',
+    clicks: 'clicks',
+    all_conversions: 'conversions',
+    all_conversions_from_interactions_rate: 'conversionRate',
+    cost_per_conversion: 'costPerConversion',
+    cost_micros: 'spend',
+    date: 'date',
+    **your_new_metric: 'yourNewMetric',**
+    };
+    
+   c. Optional: Add new Metric to the createMetricsObj in the data-mapping-master.js file (Skip this step If you already add yourNewMetric)
+   static createMetricsObj() {
+    return {
+      clickThroughRate: null,
+      impression: null,
+      costPerClick: null,
+      clicks: null,
+      conversions: null,
+      conversionRate: null,
+      costPerConversion: null,
+      spend: null,
+      currency: 'USD',
+      **yourNewMetric: null,**
+    };
+  }
+  ```
+  
+  6. Adding new Metrics to the Facebook Ads
+   
+   ```sh
+   a. Add new metric to query object in facebookAds-query.js file
+   
+   fields: [
+    'campaign_name',
+    'campaign_id',
+    'clicks',
+    'cost_per_unique_click',
+    'cpc',
+    'ctr',
+    'impressions',
+    'spend',
+    'actions',
+    'account_currency',
+    '**your_new_metric**'
+   ]
+   b. Add new metric mapping to update schemFB object in schema-fb.js file
+   
+    {
+    campaign_name: 'campaignName',
+    campaign_id: 'campaignId',
+    resource_name: 'resourceName',
+    ctr: 'clickThroughRate',
+    impressions: 'impression',
+    cpc: 'costPerClick',
+    clicks: 'clicks',
+    actionValue: 'conversions',
+    conversionRate: 'conversionRate',
+    cost_per_unique_click: 'costPerConversion',
+    spend: 'spend',
+    date_start: 'date',
+    account_currency: 'currency',
+    **your_new_metric: 'yourNewMetric',**
+    };
+    
+   c. Optional: Add new Metric to the createMetricsObj in the data-mapping-master.js file (Skip this step If you already add yourNewMetric)
+   static createMetricsObj() {
+    return {
+      clickThroughRate: null,
+      impression: null,
+      costPerClick: null,
+      clicks: null,
+      conversions: null,
+      conversionRate: null,
+      costPerConversion: null,
+      spend: null,
+      currency: 'USD',
+      **yourNewMetric: null,**
+    };
+  }
+  ```
+  7. Adding new Metrics to the Taboola Ads
+   
+   ```sh
+       https://backstage.taboola.com/backstage/api/1.0/${queryTB.account_id}/reports/campaign-summary/dimensions/${queryTB.dimension}?start_date=${queryTB.from_date}&end_date=${queryTB.to_date}&include_multi_conversions=true&exclude_empty_campaigns=true`
+       
+       Note: Taboola API already included all the standard metric when call the end point above. 
+       Please refer to the document to configure additional metrics or dimension if needed.
+       
+      Please follow this link for more detail: https://developers.taboola.com/backstage-api/reference#campaign-summary-report
+      Dimensions: https://developers.taboola.com/backstage-api/reference#dimensions-cheat-sheet
+      Standard Metrics: https://developers.taboola.com/backstage-api/reference#campaign-summary-fixed-columns
+   
+   b. Add new metric mapping to update schemFB object in schema-fb.js file
+   
+    {
+    campaign_name: 'campaignName',
+    campaign_id: 'campaignId',
+    resource_name: 'resourceName',
+    ctr: 'clickThroughRate',
+    impressions: 'impression',
+    cpc: 'costPerClick',
+    clicks: 'clicks',
+    actionValue: 'conversions',
+    conversionRate: 'conversionRate',
+    cost_per_unique_click: 'costPerConversion',
+    spend: 'spend',
+    date_start: 'date',
+    account_currency: 'currency',
+    **your_new_metric: 'yourNewMetric',**
+    };
+    
+   c. Optional: Add new Metric to the createMetricsObj in the data-mapping-master.js file (Skip this step If you already add yourNewMetric)
+   static createMetricsObj() {
+    return {
+      clickThroughRate: null,
+      impression: null,
+      costPerClick: null,
+      clicks: null,
+      conversions: null,
+      conversionRate: null,
+      costPerConversion: null,
+      spend: null,
+      currency: 'USD',
+      **yourNewMetric: null,**
+    };
+  }
+  ```
+   
 ## Remote - AWS Console
 The AWS references below are for Google Ads, which can be used as a guide for the other ad networks.
 
